@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="style.css" type="text/css"/>
+<<link rel="stylesheet" href="style.css" type="text/css"/>
 <style>
 /* Сообщения об ошибках и поля с ошибками выводим с красным бордюром. */
 .error {
@@ -6,6 +6,7 @@ border: 2px solid red;
 margin-top: 10%;
 }
 </style>
+<div class = "body">
 <form action="" method="POST">
 <?php
 if (!empty($messages)) {
@@ -17,46 +18,49 @@ print($message);
 print('</div>');
 }
 ?>
-  <p><input type="text" name="fio" placeholder="Ваше имя"></p>
-  <input name="fio" <?php if ($errors['fio']) {print 'class="error"';} ?> value="<?php print $values['fio']; ?>"/></div>
-  <p><input type="email" name="email" placeholder="Ваша почта"></p>
-  <input name="email" <?php if ($errors['email']) {print 'class="error"';} ?> value="<?php print $values['email']; ?>"/></div>
-  <br>
-  <h2>Ваш год рождения</h2>
-  <select name="year" <?php if ($errors['year']) {print 'class="error"';} ?> value="<?php print $values['year']; ?>">
-  <select name="year">
-    <?php 
-    for ($i = 1900; $i <= 2023; $i++) {
-      printf('<option value="%d">%d Год</option>', $i, $i);
-    }
-    ?>
-  </select>
-  <br>
-  <br>
-  <h2>Ваш пол</h2>
-  <p><input type="radio" name="r1[]" value="male"> Мужской</p>
-  <p><input type="radio" name="r1[]" value="female"> Женский</p>
-  <p><input type="radio" name="r1[]" value="other">Другой</p>
+<div class = "main">
+<div class = "name"><label>Ваше ФИО</label>
+<input name="fio" <?php if ($errors['fio']) {print 'class="error"';} ?> value="<?php print $values['fio']; ?>"/></div>
+<div class = "email"><label>Ваша электронная почта:</label>
+<input name="email" <?php if ($errors['email']) {print 'class="error"';} ?> value="<?php print $values['email']; ?>"/></div>
+<div class = "year"><label>Ваш год рождения:</label>
+<select name="year" <?php if ($errors['year']) {print 'class="error"';} ?> value="<?php print $values['year']; ?>">
+<?php
+for ($i = 1900; $i <= 2023; $i++) {
+printf('<option value="%d">%d год</option>', $i, $i);
+}
+?>
+</select></div>
+<div class = "gender"><label>Ваш пол:</label>
+<label>Мужской</label><input type="radio" checked="checked" name="gender" value="0"/>
+<label>Женский</label><input type="radio" name="gender" value="1" />
+</div>
 
-  <br> 
-  <h2>Количество ваших конечностей</h2>
-  <p><input type="radio" name="r2[]" value="2">2</p>
-  <p><input type="radio" name="r2[]" value="3">3</p>
-  <p><input type="radio" name="r2[]" value="4">4</p>
-  <p><input type="radio" name="r2[]" value="many">4+</p>
-  <br> 
-  <h2>Ваши сверхспособности</h2>
-  <p><select multiple="multiple" name="abilities[]">
-    <option value="Immortality">Бессмертие</option>
-    <option value="Passing through walls">Прохождение сквозь стены</option>
-    <option value="Levitation">Левитация</option>
-    </select>
-  </p>
-  <br>
-  <h2>Ваша биография</h2>
-  <textarea name="biography" <?php if ($errors['biography']) {print 'class="error"';} ?> value="<?php print $values['biography']; ?>"></textarea>
-  <br>
-  <h2>С контрактом ознакомлен(а)</h2>
-  <p><input type="checkbox" name="cb"></p>
-  <input type="submit" value="Подтверждаю" />
+<div class = "limbs"><label>Количество ваших конечностей:</label>
+<label>4</label>
+<input type="radio" checked="checked" name="limbs" value="4" />
+<label>5-9</label>
+<input type="radio" name="limbs" value="many" />
+<label>10+</label>
+<input type="radio" name="limbs" value="very many" />
+</div>
+
+<div class = "ability">
+<select name="abilities" multiple="multiple"></br>
+<option select="selected" value="immrotality">Бессмертие</option>
+<option value="noclipping">Умение проходить сквозь стены</option>
+<option value="levitation">Левитация</option>
+</select>
+</div>
+
+<div class = "biography"><label> Ваша биография:</label></br>
+<textarea name="biography" <?php if ($errors['biography']) {print 'class="error"';} ?> value="<?php print $values['biography']; ?>"></textarea>
+</div>
+
+<p>
+<input type="checkbox" name="check1" /> С контрактом ознакомлен(а)
+</p>
+<input type="submit" value="Отправить заявку" />
+</div>
 </form>
+</div>
