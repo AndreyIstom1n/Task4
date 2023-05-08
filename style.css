@@ -4,8 +4,6 @@
 }
 
 .main {
-    border-top-right-radius: 50%;
-border: black 10px double;
 background-clip: content-box;
     text-align: center;
 }
